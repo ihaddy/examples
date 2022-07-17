@@ -1,40 +1,5 @@
-variable "ENV" {
 
-}
 
-variable "instance_type" {
-  default = "t2.micro"
-}
-
-variable "public_subnets" {
-  # type = list(string)
-  type = list(string)
-}
-
-variable "vpc_id" {
-
-}
-
-variable "path_to_public_key" {
-  default = "mykey.pub"
-
-}
-
-data "aws_ami" "ubuntu" {
-
-  most_recent = true
-
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-*-22.04-amd64-server-*"]
-  }
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  owners = ["099720109477"] #this is canonicals ID
-}
 
 resource "aws_instance" "instance" {
 
